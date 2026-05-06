@@ -22,8 +22,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'career_id',
+        'terms_accepted'
     ];
 
+    public function career()
+    {
+        return $this->belongsTo(Career::class); // este error sucede porque en la carpeta model no existe para eso hacemos lo creamos en git
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

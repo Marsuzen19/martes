@@ -7,8 +7,9 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Order_ProductController;
+use App\Http\Controllers\Api\UserController;
 
-Route::get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) { //el nombre en azul es lo que se pone en la url para que se puedan usar las funciones de crud
     return $request->user();
 })->middleware('auth:sanctum');
 Route::apiResource('products', ProductController::class);
