@@ -11,13 +11,14 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory, SoftDeletes; // Activa las fábricas y el borrado lógico
 
-    // 1. Atributos asignables (Fillable)
+    // 1. Atributos asignables  es importante poner todos los campos que se van a insertar o actualizar
     protected $fillable = [
         'category_id',
         'name',
         'description',
         'sku',
         'stock',
+        'stock', //eliminar un stock repetido
         'price',
         'is_active'
     ];

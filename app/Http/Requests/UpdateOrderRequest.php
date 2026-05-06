@@ -12,7 +12,7 @@ class UpdateOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;//solucion de error 403 en postam cambie el false
     }
 
     /**
@@ -23,7 +23,12 @@ class UpdateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        'customer_id'      => 'required|exists:customers,id',
+        'order_number' => 'required|string|max:255|unique:orders,order_number,' . $this->route('order'),
+        'total_price'      => 'required|numeric|min:0', 
+        'status'           => 'required|in:pending,paid,shipped,cancelled',
+        'shipping_address' => 'required|string',
+        'notes'            => 'nullable|string'
         ];
     }
 }

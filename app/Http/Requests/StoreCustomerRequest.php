@@ -12,7 +12,7 @@ class StoreCustomerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;//solucion de error 403 en postam cambie el false
     }
 
     /**
@@ -23,7 +23,14 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'email'      => 'required|email|unique:customers,email',
+            'phone'      => 'nullable|string|max:20',
+            'address'    => 'required|string|max:255',
+            'city'       => 'required|string|max:100',
+            'birth_date' => 'nullable|date'
+
         ];
     }
 }
